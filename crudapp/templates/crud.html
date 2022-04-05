@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-Stack</title>
+    <link rel = 'stylesheet' href = "{% static 'style.css' %}">
+</head>
+<body>
+    <div id = 'container'>
+        <h1>To-Do-CRUD</h1>
+        <div id = 'formContainer'>
+            <form method="POST">
+                {% csrf_token %}
+                {{crudformget.mycrud}}
+                <button id = 'add' type = 'submit'>Add</button>
+            </form>
+        </div>
+        <div id = 'todoItems'>
+                {% for i in crudget %}
+                    <div class = 'item'>
+                        <p>{{i.mycrud}}</p>
+                        <div class = 'controls'>
+                            <a href="{% url 'update' i.id %}"><button class="edit">Edit</button></a>
+                            <a href="{% url 'delete' i.id %}"><button class="delete">Delete</button></a>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+
+              
+                
+                
+            
+        </div>
+    </div> 
+    
+</body>
+    
+</html>
